@@ -3,7 +3,7 @@
 int main()
 {
     int totMemSize,noPartition,eachPartition,noProcess;
-    int mReqProcess[4],i,f,f1=0,f2=0,intFrag,fra2,s1,remMem;
+    int mReqProcess[4],i,totFrag,totIntFrag=0,totExtFrag=0,intFrag,extFrag,s1,remMem;
     
     printf("Enter the memory size: ");
     scanf("%d",&totMemSize);
@@ -38,7 +38,7 @@ int main()
                 
                 printf("\nInternal Fragmentation for process is: %d",intFrag);
                 
-                f1 = f1+intFrag;
+                totIntFrag = totIntFrag+intFrag;
                 remMem = remMem - eachPartition;
             }
             // if the mReqProcess size is more than partition size then error
@@ -52,10 +52,10 @@ int main()
                 }
                 
                 remMem = remMem - eachPartition;
-                fra2 = eachPartition - s1;
-                f2 = f2 + fra2;
+                extFrag = eachPartition - s1;
+                totExtFrag = totExtFrag + extFrag;
                 
-                printf("\nExternal Fragmentation for this process is: %d",fra2);
+                printf("\nExternal Fragmentation for this process is: %d",extFrag);
                 
             }
             
@@ -68,8 +68,8 @@ int main()
         printf("\n %5d\t%5d",i+1,mReqProcess[i]);
     }
     
-    f = f1 + f2;
-    printf("\nThe total no of fragmentation is: %d",f);
+    totFrag = totIntFrag + totExtFrag;
+    printf("\nThe total no of fragmentation is: %d",totFrag);
     
     return 0;
 }
